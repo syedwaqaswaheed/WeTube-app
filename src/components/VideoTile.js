@@ -11,18 +11,17 @@ const VideoTile = (props) => {
     this.props.activeVideo(this.props.id);
   };
 
+  //     {this.props.views.toLocaleString()}
   return (
     <div className="videoTile" onClick={handleVideoTileClick}>
       <>
         <div className="videoTile__title">
           <div className="videoTile__title__text">{"Title:"}</div>
-          <div className="videoTile__title__value">{this.props.title}</div>
+          <div className="videoTile__title__value">{"Ikram"}</div>
         </div>
         <div className="videoTile__views">
           <div className="videoTile__views__text">{"Views:"}</div>
-          <div className="videoTile__views__value">
-            {this.props.views.toLocaleString()}
-          </div>
+          <div className="videoTile__views__value">{12345656}</div>
         </div>
       </>
     </div>

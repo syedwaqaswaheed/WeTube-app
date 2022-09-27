@@ -1,6 +1,5 @@
 import logo from "./logo.svg";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import SearchResult from "./pages/SearchResult";
@@ -16,8 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="watch/{id}" element={<Playback />} />
-            <Route path="contact" element={<SearchResult />} />
+            <Route path="/playback:playbackId" element={<Playback />} />
+            <Route path="/search" element={<SearchResult />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
