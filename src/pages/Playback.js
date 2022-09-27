@@ -1,24 +1,37 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import YouTube from "react-youtube";
+import Box from "@mui/material/Box";
+import { DrawerHeader } from "./Layout";
+import { Typography } from "@mui/material";
 
-const Playback = (props) => {
-  const params = useParams();
+const Playback = () => {
+  const location = useLocation();
 
-  console.log(params);
+  const videoId = location ? location.search.split("?")[1] : "";
+
+  console.log(location);
+
   const opts = {
-    height: "390",
-    width: "640",
+    height: "720",
+    width: "1080",
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   };
 
   return (
-    props.videoId && (
-      <YouTube videoId={props.videoId} opts={opts} onReady={this._onReady} />
-    )
+    <Box component="main" sx={{ flexGrow: 0, p: 1 }}>
+      <DrawerHeader />
+      {videoId && <YouTube videoId={videoId} opts={opts} />}
+      {/* <Typography>{video.videoName}</Typography>
+      <Typography display="block" variant="caption" color="text.secondary">
+        {video.channelName}
+      </Typography>
+      <Typography variant="caption" color="text.secondary">
+        {`${video.views}`}
+      </Typography> */}
+    </Box>
   );
 };
 
