@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from "../logo.svg";
 import { Outlet } from "react-router-dom";
 import { styled, useTheme, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -6,9 +7,9 @@ import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
+import { Link } from "react-router-dom";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -18,9 +19,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
+import ExploreIcon from "@mui/icons-material/Explore";
+import SlideshowIcon from "@mui/icons-material/Slideshow";
+import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
+import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
+import HistoryIcon from "@mui/icons-material/History";
+import DownloadIcon from "@mui/icons-material/Download";
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
@@ -156,9 +162,9 @@ const Layout = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            WeTube
-          </Typography>
+          <Link to="/">
+            <img src={`${logo}`} alt="logo" style={{ cursor: "pointer" }} />
+          </Link>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -182,7 +188,7 @@ const Layout = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Home", "Explore", "Shorts", "Drafts"].map((text, index) => (
+          {["Home", "Explore", "Shorts", "Subscriptions"].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
@@ -198,7 +204,10 @@ const Layout = () => {
                     justifyContent: "center",
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index === 0 && <HomeIcon />}
+                  {index === 1 && <ExploreIcon />}
+                  {index === 2 && <SlideshowIcon />}
+                  {index === 3 && <SubscriptionsIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -207,7 +216,7 @@ const Layout = () => {
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {["Library", "History", "Downloads"].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
@@ -223,7 +232,9 @@ const Layout = () => {
                     justifyContent: "center",
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index === 0 && <VideoLibraryIcon />}
+                  {index === 1 && <HistoryIcon />}
+                  {index === 2 && <DownloadIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
