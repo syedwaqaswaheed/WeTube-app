@@ -34,8 +34,8 @@ const ImageList = () => {
           )}
 
           {video ? (
-            <Box sx={{ p: 2 }} alignItems="start">
-              <Typography gutterBottom display="inline-center" variant="title">
+            <Box sx={{ p: 2 }}>
+              <Typography gutterBottom display="inline-flex" variant="title">
                 <Avatar
                   alt={video.channelName}
                   src={`/assets/channels/${video.channelThumbnail}`}
@@ -50,7 +50,7 @@ const ImageList = () => {
                 {video.channelName}
               </Typography>
               <Typography variant="caption" color="text.secondary">
-                {`${video.views}`}
+                {`${video.views} Views`}
               </Typography>
             </Box>
           ) : (

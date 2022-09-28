@@ -9,23 +9,19 @@ const SearchResultItem = (props) => {
 
   return (
     <Box sx={{ width: 480, marginRight: 0.5, my: 5 }}>
-      {video && (
-        <>
-          <Link
-            to={{
-              pathname: `/playback`,
-              state: { video: video.videoId },
-              search: `?${getVideoId(video)}`,
-            }}
-          >
-            <img
-              src={`/assets/videos/${video.videoThumbnail}`}
-              style={{ width: 450, height: 300, cursor: "pointer" }}
-              alt={video.videoName}
-            />
-          </Link>
-        </>
-      )}
+      <Link
+        to={{
+          pathname: `/playback`,
+          state: { video: video.videoId },
+          search: `?${getVideoId(video)}`,
+        }}
+      >
+        <img
+          src={`/assets/videos/${video.videoThumbnail}`}
+          style={{ width: 450, height: 300, cursor: "pointer" }}
+          alt={video.videoName}
+        />
+      </Link>
       <Box sx={{ pr: 2 }}>
         <Typography gutterBottom display="inline-center" variant="title">
           <Avatar
@@ -43,14 +39,13 @@ const SearchResultItem = (props) => {
             alt={video.channelName}
             src={`/assets/channels/${video.channelThumbnail}`}
           />
-
           {video.videoName}
         </Typography>
         <Typography display="block" variant="caption" color="text.secondary">
           {video.channelName}
         </Typography>
         <Typography variant="caption" color="text.secondary">
-          {`${video.views}`}
+          {`${video.views} Views`}
         </Typography>
       </Box>
     </Box>
