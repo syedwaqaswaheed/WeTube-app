@@ -15,11 +15,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/playback" element={<Playback />} />
-            <Route
-              path="/playback"
-              render={(props) => <Playback {...props} />}
-            />
-            <Route path="/search" element={<SearchResult />} />
+            <Route exact="true" path="/search" element={<SearchResult />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

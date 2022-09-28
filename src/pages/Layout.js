@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../logo.svg";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { styled, useTheme, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -137,6 +137,9 @@ const Drawer = styled(MuiDrawer, {
 const Layout = () => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -145,6 +148,22 @@ const Layout = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleSearchItem = (event) => {
+    if (event.key === "Enter") {
+      setSearchQuery(event.target.value);
+      navigate("/search?");
+      navigate({
+        pathname: "/search",
+        search: `?query=${searchQuery}`,
+      });
+    }
+  };
+
+  const clearSearchField = () => {
+    setSearchQuery("");
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -172,6 +191,9 @@ const Layout = () => {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              onKeyDown={handleSearchItem}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              value={searchQuery}
             />
           </Search>
         </Toolbar>

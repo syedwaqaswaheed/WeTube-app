@@ -1,19 +1,14 @@
-import * as React from "react";
+import React from "react";
 import videoData from "../data/data.json";
-import getYouTubeID from "get-youtube-id";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
 import { Link } from "react-router-dom";
+import { getVideoId } from "../scripts/utility";
+import { Avatar } from "@mui/material";
 
 const ImageList = () => {
-  const getVideoId = (video) => {
-    const videoLink = video.videoId;
-
-    return getYouTubeID(videoLink);
-  };
-
   return (
     <Grid container>
       {videoData.map((video, index) => (
@@ -39,20 +34,12 @@ const ImageList = () => {
           )}
 
           {video ? (
-            <Box sx={{ pr: 2 }}>
+            <Box sx={{ p: 2 }} alignItems="start">
               <Typography gutterBottom display="inline-center" variant="title">
-                <img
-                  style={{
-                    width: 50,
-                    height: 50,
-                    border: "1px solid black",
-                    borderRadius: "50%",
-                    margin: "1px",
-                  }}
+                <Avatar
                   alt={video.channelName}
                   src={`/assets/channels/${video.channelThumbnail}`}
                 />
-
                 {video.videoName}
               </Typography>
               <Typography
