@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
-import { getVideoId } from "../scripts/utility";
+import { getVideoId, getViewsInUnit } from "../scripts/utility";
 import { Avatar } from "@mui/material";
 import { AvatarContainer } from "../scripts/utility";
 
@@ -43,7 +43,7 @@ const SearchResultItem = (props) => {
         {video.channelName}
       </Typography>
       <Typography variant="caption" color="text.secondary">
-        {`${video.views} Views`}
+        {`${getViewsInUnit(video.views)} Views`}
       </Typography>
     </Box>
   );

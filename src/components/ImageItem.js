@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
 import { Link } from "react-router-dom";
-import { getVideoId } from "../scripts/utility";
+import { getVideoId, getViewsInUnit } from "../scripts/utility";
 import { Avatar } from "@mui/material";
 import { AvatarContainer } from "../scripts/utility";
 
@@ -17,7 +17,6 @@ const ImageItem = (props) => {
           <Link
             to={{
               pathname: `/playback`,
-              state: { video: video.videoId },
               search: `?${getVideoId(video)}`,
             }}
           >
@@ -48,7 +47,7 @@ const ImageItem = (props) => {
             {video.channelName}
           </Typography>
           <Typography variant="caption" color="text.secondary">
-            {`${video.views} Views`}
+            {`${getViewsInUnit(video.views)} Views`}
           </Typography>
         </Box>
       ) : (

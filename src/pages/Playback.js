@@ -21,13 +21,6 @@ const Playback = () => {
     <Box component="main" sx={{ flexGrow: 0, p: 1 }}>
       <DrawerHeader />
       {videoId && <YouTube videoId={videoId} opts={opts} />}
-      {/* <Typography>{video.videoName}</Typography>
-      <Typography display="block" variant="caption" color="text.secondary">
-        {video.channelName}
-      </Typography>
-      <Typography variant="caption" color="text.secondary">
-        {`${video.views}`}
-      </Typography> */}
     </Box>
   );
 };
